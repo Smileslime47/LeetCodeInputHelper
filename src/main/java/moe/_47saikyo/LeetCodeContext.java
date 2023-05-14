@@ -14,21 +14,44 @@ public class LeetCodeContext {
         superClass = cls;
     }
 
-    private LeetCodeData getData(int index) throws Exception {
+    /**
+     * Retrieves a specific LeetCodeData instance based on a given index.
+     * <p>
+     * This method first attempts to get a LeetCodeData annotation from the superClass.
+     * If no such annotation is found, it tries to get a LeetCodeDatas annotation from the superClass.
+     * <p>
+     * If neither a LeetCodeData nor a LeetCodeDatas annotation can be found, the method throws an IllegalArgumentException,
+     * indicating that no data could be found.
+     * <p>
+     * If a LeetCodeData annotation is found, it is returned immediately.
+     * <p>
+     * If a LeetCodeDatas annotation is found, the method checks to see if its value (an array of LeetCodeData)
+     * is non-null and has a length greater than the provided index. If not, it throws an IllegalArgumentException,
+     * indicating that the index is out of bounds.
+     * <p>
+     * If the LeetCodeDatas annotation's value is non-null and has a length greater than the index,
+     * the method returns the LeetCodeData at the specified index.
+     *
+     * @param index The index of the LeetCodeData to retrieve.
+     * @return The LeetCodeData at the specified index.
+     * @throws IllegalArgumentException If no data could be found or if the index is out of bounds.
+     */
+    private LeetCodeData getData(int index) {
         LeetCodeDatas arrs = superClass.getAnnotation(LeetCodeDatas.class);
         LeetCodeData arr = superClass.getAnnotation(LeetCodeData.class);
-        if (arrs != null) {
-            for (LeetCodeData i : arrs.value()) {
-                if (i.index() == index) {
-                    arr = i;
-                    break;
-                }
-            }
+
+        if (arr == null && arrs == null) {
+            throw new IllegalArgumentException("no data");
         }
-        if (arr == null) {
-            throw new Exception("找不到数据");
+
+        if (arr != null) {
+            return arr;
         }
-        return arr;
+
+        if (arrs.value() == null || arrs.value().length <= index) {
+            throw new IllegalArgumentException("index larger than the number of data");
+        }
+        return arrs.value()[index];
     }
 
     public int[] getIntArray(int index) throws Exception {
