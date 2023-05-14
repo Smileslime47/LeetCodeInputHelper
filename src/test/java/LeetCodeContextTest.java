@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 @LeetCodeData(value = "[1,null,0,0,1]", index = 0)
-@LeetCodeData(value = "[1,2,3]", index = 1)
+@LeetCodeData(value = "1,2,3", index = 1)
 @LeetCodeData(value = "[[1,2,3],[1,2],[3]]", index = 2)
 @LeetCodeData(value = "['A','B','C','D']", index = 3)
 @LeetCodeData(value = "[['A','B','C'],['B','C'],['C']]", index = 4)
