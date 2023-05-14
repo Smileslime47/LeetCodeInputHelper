@@ -1,6 +1,7 @@
 import moe._47saikyo.LeetCodeContext;
 import moe._47saikyo.annotations.LeetCodeData;
 import moe._47saikyo.data_structure.ListNode;
+import moe._47saikyo.data_structure.TreeNode;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +15,10 @@ import org.junit.Test;
 @LeetCodeData(value="",index=7)
 public class LeetCodeContextTest {
     LeetCodeContext lcc;
+    public static void main(String[] args) throws Exception {
+        LeetCodeContext lcc=new LeetCodeContext(LeetCodeContextTest.class);
+        TreeNode root=lcc.getBinaryTree(0);
+    }
 
     @Before
     public void init() {

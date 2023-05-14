@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="LeetCodeInputHelper:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LeetCodeInputHelper_jar</output-path>
+    <root id="archive" name="LeetCodeInputHelper.jar">
+      <element id="module-output" name="LeetCodeInputHelper" />
+    </root>
+  </artifact>
+</component>
