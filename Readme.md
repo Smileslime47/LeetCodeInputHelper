@@ -82,7 +82,11 @@ public class Main{
 
 ### 字符串数组 
 ```java
+//单行文本
 @LeetCodeData("[\"tars\",\"rats\",\"arts\",\"star\"]")
+//文本块
+@LeetCodeData(value = """
+        ["tars","rats","arts","star"]""")
 ```
 
 ### LeetCode提供的二叉树和链表等
