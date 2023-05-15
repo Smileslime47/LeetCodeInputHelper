@@ -59,34 +59,38 @@ public class Main{
 @LeetCodeData("[1,2,3]")//index 1
 ...
 @LeetCodeExample("s=[1,2,3],b=[4,5,6]")//expIndex 0
-@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']]")//Index 1
+@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']]")//expIndex 1
 ```
 
 ## 支持格式
 ### 一维数组
 ```java
-@LeetCodeData(value = "[1,2,3]", index = 1)
-@LeetCodeData(value = "['A','B','C','D']", index = 3)
+@LeetCodeData("[1,2,3]")
+@LeetCodeData("['A','B','C','D']")
 ```
 
 ### 二维数组
 ```java
-@LeetCodeData(value = "[[1,2,3],[1,2],[3]]", index = 2)
-@LeetCodeData(value = "[['A','B','C'],['B','C'],['C']]", index = 4)
+@LeetCodeData("[[1,2,3],[1,2],[3]]")
+@LeetCodeData("[['A','B','C'],['B','C'],['C']]")
 ```
 
 ### 字符串
 ```java
-@LeetCodeData(value = "abcdefg", index = 5)
+@LeetCodeData("abcdefg")
 ```
 
 ### 字符串数组 
 ```java
-@LeetCodeData(value = "[\"tars\",\"rats\",\"arts\",\"star\"]", index = 6)
+@LeetCodeData("[\"tars\",\"rats\",\"arts\",\"star\"]")
 ```
 
 ### LeetCode提供的二叉树和链表等
 ```java
-@LeetCodeData(value = "[1,null,0,0,1]", index = 0)
+@LeetCodeData("[1,null,0,0,1]")
 ```
 
+### LeetCode提供的完整样例
+```java
+@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']],d=[1,null,0,0,1]")
+```
