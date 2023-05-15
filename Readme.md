@@ -1,7 +1,7 @@
 # LeetCodeInputHelper
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## 概述
-一个将力扣[...]格式的输入样例直接转换成可用的数据结构！
+将力扣[...]格式的输入样例直接转换成可用的数据结构！
 
 样例：
 ```java
@@ -15,10 +15,14 @@ public class Main{
 ```
 
 ## 使用方法
-在测试类前加上@LeetCodeData注解，该注解包含两个参数
+在测试类前加上@LeetCodeData注解，该注解包含1个参数
 - value：数据内容，支持`[...]`的字符串格式，此外最外层的中括号也可以去除，如`@LeetCodeData(value = "1,2,3")
 `
-- index：在输入多组数据时，通过index区分不同数据，不输入默认为0
+
+此外你也可以用@LeetCodeExample样例输入一整串样例，如
+```java
+@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']],d=[1,null,0,0,1]")
+```
 
 在main函数中创建`LeetCodeContext`类，并在构造参数中输入所在类的Class对象，如：
 ```java
@@ -36,6 +40,27 @@ LeetCodeContext支持的方法：
 - `TreeNode getBinaryTree(int index)`：按照LeetCode常用的TreeNode类解析指定index的注解，并返回一个二叉树的根节点
 - `ListNode getListNode(int index)`：按照LeetCode常用的ListNode类解析指定index的注解，并返回一个链表的根节点
 
+对于所有get方法都有解析Example的版本：
+- `T getT(int expIndex,int index)`：解析指定Example注解的第i项数据，同样从0开始
+
+```java
+@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']],d=[1,null,0,0,1]")
+public class Main{
+    public static void main(String[] args){
+        LeetCodeContext lcc=new LeetCodeContext(Main.class);
+        TreeNode root=lcc.getBinaryTree(0,3);
+    }
+}
+```
+
+当同时包含多个Data注解或者Example注解时，index按照代码顺序分配，从0开始，且二者彼此独立如：
+```java
+@LeetCodeData("[1,null,0,0,1]")//index 0
+@LeetCodeData("[1,2,3]")//index 1
+...
+@LeetCodeExample("s=[1,2,3],b=[4,5,6]")//expIndex 0
+@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']]")//Index 1
+```
 
 ## 支持格式
 ### 一维数组
