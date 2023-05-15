@@ -5,6 +5,28 @@ import java.util.List;
 public class StringParser {
     public enum TYPE{Integer,Char,String,Array,Object,Null}
 
+    public static List<String> delimit_Example(String value){
+        List<String> ret=new ArrayList<>();
+        int i=0,j;
+        while (i<value.length()){
+            while (i<value.length()&&value.charAt(i)!='='){
+                i++;
+            }
+            i++;
+            j=i+1;
+            while (j<value.length()&&value.charAt(j)!='='){
+                j++;
+            }
+            while (j<value.length()&&(value.charAt(j)!=']'&&value.charAt(j)!='"')){
+                j--;
+            }
+            if(j<value.length())j++;
+            ret.add(value.substring(i,j));
+            i=j+1;
+        }
+        return ret;
+    }
+
     public static List<String> delimit(String value) throws Exception {
         List<String> ret=new ArrayList<>();
         int i,j;
@@ -54,26 +76,20 @@ public class StringParser {
     }
 
     public static int getInt(String value) throws Exception {
-        for (int j=0;j<value.length();j++){
-            if(value.charAt(j)>'9'||value.charAt(j)<'0'){
-                throw new Exception("非法的数字类型");
-            }
+        if(checkType(value)!=TYPE.Integer){
+            throw new Exception("非法的数字类型");
         }
         return Integer.parseInt(value);
     }
     public static char getChar(String value) throws Exception {
-        for (int j=0;j<value.length();j++){
-            if(value.length()!=3||value.charAt(0)!='\''||value.charAt(2)<'\''){
-                throw new Exception("非法的字符类型");
-            }
+        if(checkType(value)!=TYPE.Char){
+            throw new Exception("非法的字符类型");
         }
         return value.charAt(1);
     }
     public static String getString(String value) throws Exception {
-        for (int j=0;j<value.length();j++){
-            if(value.charAt(0)!='"'||value.charAt(value.length()-1)<'"'){
-                throw new Exception("非法的字符串类型");
-            }
+        if(checkType(value)!=TYPE.String){
+            throw new Exception("非法的字符串类型");
         }
         return value.substring(1,value.length()-1);
     }
@@ -109,5 +125,4 @@ public class StringParser {
         }
         return ret;
     }
-
 }

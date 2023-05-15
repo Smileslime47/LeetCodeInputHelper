@@ -1,19 +1,22 @@
 import moe._47saikyo.LeetCodeContext;
 import moe._47saikyo.annotations.LeetCodeData;
+import moe._47saikyo.annotations.LeetCodeExample;
 import moe._47saikyo.data_structure.ListNode;
 import moe._47saikyo.data_structure.TreeNode;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-@LeetCodeData(value = "[1,null,0,0,1]", index = 0)
-@LeetCodeData(value = "1,2,3", index = 1)
-@LeetCodeData(value = "[[1,2,3],[1,2],[3]]", index = 2)
-@LeetCodeData(value = "['A','B','C','D']", index = 3)
-@LeetCodeData(value = "[['A','B','C'],['B','C'],['C']]", index = 4)
-@LeetCodeData(value = "abcdefg", index = 5)
-@LeetCodeData(value = "[\"tars\",\"rats\",\"arts\",\"star\"]", index = 6)
-@LeetCodeData(value = "", index = 7)
+@LeetCodeData("[1,null,0,0,1]")
+@LeetCodeData("[1,2,3]")
+@LeetCodeData("[[1,2,3],[1,2],[3]]")
+@LeetCodeData("['A','B','C','D']")
+@LeetCodeData("[['A','B','C'],['B','C'],['C']]")
+@LeetCodeData("abcdefg")
+@LeetCodeData("[\"tars\",\"rats\",\"arts\",\"star\"]")
+@LeetCodeData("")
+@LeetCodeExample("s=[1,2,3],b=[4,5,6]")
+@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']],d=[1,null,0,0,1]")
 public class LeetCodeContextTest {
     LeetCodeContext lcc;
 
@@ -27,6 +30,7 @@ public class LeetCodeContextTest {
         int[] expected = {1, 2, 3};
         int[] actual = lcc.getIntArray(1);
         Assert.assertArrayEquals(expected, actual);
+
     }
 
     @Test
@@ -86,5 +90,21 @@ public class LeetCodeContextTest {
         expected.right.left = new TreeNode(0);
         expected.right.right = new TreeNode(1);
         TreeNode actual = lcc.getBinaryTree(0);
+    }
+
+    @Test
+    public void ExampleTest() throws Exception {
+        int[] s=new int[]{7,8,9};
+        String b="abcdefg";
+        char[][] c = {{'A', 'B', 'C'}, {'B', 'C'}, {'C'}};
+        TreeNode d = new TreeNode(1);
+        d.right = new TreeNode(1);
+        d.right.left = new TreeNode(0);
+        d.right.right = new TreeNode(1);
+
+        Assert.assertArrayEquals(s,lcc.getIntArray(1,0));
+        Assert.assertEquals(b,lcc.getString(1,1));
+        Assert.assertArrayEquals(c,lcc.getCharArrays(1,2));
+        //Assert.assertEquals(d,lcc.getBinaryTree(1,3));
     }
 }

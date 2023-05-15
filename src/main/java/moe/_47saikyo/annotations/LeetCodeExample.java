@@ -4,8 +4,7 @@ import java.lang.annotation.*;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Repeatable(LeetCodeDatas.class)
-public @interface LeetCodeData {
+@Repeatable(LeetCodeExamples.class)
+public @interface LeetCodeExample {
     String value() default "";
 }
-
