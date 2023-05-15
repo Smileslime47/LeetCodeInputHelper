@@ -2,6 +2,7 @@ import moe._47saikyo.LeetCodeContext;
 import moe._47saikyo.annotations.LeetCodeData;
 import moe._47saikyo.data_structure.ListNode;
 import moe._47saikyo.data_structure.TreeNode;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,13 +13,9 @@ import org.junit.Test;
 @LeetCodeData(value = "[['A','B','C'],['B','C'],['C']]", index = 4)
 @LeetCodeData(value = "abcdefg", index = 5)
 @LeetCodeData(value = "[\"tars\",\"rats\",\"arts\",\"star\"]", index = 6)
-@LeetCodeData(value="",index=7)
+@LeetCodeData(value = "", index = 7)
 public class LeetCodeContextTest {
     LeetCodeContext lcc;
-    public static void main(String[] args) throws Exception {
-        LeetCodeContext lcc=new LeetCodeContext(LeetCodeContextTest.class);
-        TreeNode root=lcc.getBinaryTree(0);
-    }
 
     @Before
     public void init() {
@@ -27,61 +24,67 @@ public class LeetCodeContextTest {
 
     @Test
     public void IntArrTest() throws Exception {
-        int[] arr=lcc.getIntArray(1);
-        for (int i:arr){
-            System.out.print(i+" ");
-        }
+        int[] expected = {1, 2, 3};
+        int[] actual = lcc.getIntArray(1);
+        Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void IntArrsTest() throws Exception {
-        int[][] arr=lcc.getIntArrays(2);
-        for (int[] i:arr){
-            for (int j:i){
-                System.out.print(j+" ");
-            }
-            System.out.println();
-        }
+        int[][] expected = {{1, 2, 3}, {1, 2}, {3}};
+        int[][] actual = lcc.getIntArrays(2);
+        Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void CharArrTest() throws Exception {
-        char[] arr=lcc.getCharArray(3);
-        for (char i:arr){
-            System.out.print(i+" ");
-        }
+        char[] expected = {'A', 'B', 'C', 'D'};
+        char[] actual = lcc.getCharArray(3);
+        Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void CharArrsTest() throws Exception {
-        char[][] arr=lcc.getCharArrays(4);
-        for (char[] i:arr){
-            for (char j:i){
-                System.out.print(j+" ");
-            }
-            System.out.println();
-        }
+        char[][] expected = {{'A', 'B', 'C'}, {'B', 'C'}, {'C'}};
+        char[][] actual = lcc.getCharArrays(4);
+        Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void StringTest() throws Exception {
-        System.out.println(lcc.getString(5));
+        String expected = "abcdefg";
+        String actual = lcc.getString(5);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void StringArrTest() throws Exception {
-        for (String i:lcc.getStringArray(6)){
-            System.out.println(i);
-        }
+        String[] expected = {"tars", "rats", "arts", "star"};
+        String[] actual = lcc.getStringArray(6);
+        Assert.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void ListNodeTest() throws Exception {
-        ListNode head=lcc.getListNode(1);
+        ListNode expected = new ListNode(1);
+        expected.next = new ListNode(2);
+        expected.next.next = new ListNode(3);
+
+        ListNode actual = lcc.getListNode(1);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void NullTest() throws Exception {
-        System.out.println(lcc.getString(7));
+    public void EmptyTest() throws Exception {
+        Assert.assertEquals("", lcc.getString(7));
+    }
+
+    @Test
+    public void BinaryTreeTest() throws Exception {
+        TreeNode expected = new TreeNode(1);
+        expected.right = new TreeNode(1);
+        expected.right.left = new TreeNode(0);
+        expected.right.right = new TreeNode(1);
+        TreeNode actual = lcc.getBinaryTree(0);
     }
 }
