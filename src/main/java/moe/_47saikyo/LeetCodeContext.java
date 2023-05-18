@@ -77,13 +77,16 @@ public class LeetCodeContext {
         return StringParser.delimit_Example(originData).get(index);
     }
 
+    public int getInt(int expIndex,int index) throws Exception {return getInt(getData(expIndex,index));}
+    public int getInt(int index) throws Exception {return getInt(getData(index));}
+    private int getInt(String data) throws Exception {
+        List<String> list = StringParser.delimit(data);
+        Object[] objs = StringParser.getArray(list);
+        return (int) objs[0];
+    }
 
-    public int[] getIntArray(int expIndex,int index) throws Exception {
-        return getIntArray(getData(expIndex,index));
-    }
-    public int[] getIntArray(int index) throws Exception {
-        return getIntArray(getData(index));
-    }
+    public int[] getIntArray(int expIndex,int index) throws Exception {return getIntArray(getData(expIndex,index));}
+    public int[] getIntArray(int index) throws Exception {return getIntArray(getData(index));}
     private int[] getIntArray(String data) throws Exception {
         if(Objects.equals(data,""))return new int[0];
         List<String> list = StringParser.delimit(data);
@@ -96,12 +99,8 @@ public class LeetCodeContext {
         return ret;
     }
 
-    public int[][] getIntArrays(int expIndex,int index) throws Exception {
-        return getIntArrays(getData(expIndex,index));
-    }
-    public int[][] getIntArrays(int index) throws Exception {
-        return getIntArrays(getData(index));
-    }
+    public int[][] getIntArrays(int expIndex,int index) throws Exception {return getIntArrays(getData(expIndex,index));}
+    public int[][] getIntArrays(int index) throws Exception {return getIntArrays(getData(index));}
     private int[][] getIntArrays(String data) throws Exception {
         if(Objects.equals(data,""))return new int[0][];
         List<String> list = StringParser.delimit(data);
@@ -117,12 +116,16 @@ public class LeetCodeContext {
         return ret;
     }
 
-    public char[] getCharArray(int expIndex,int index) throws Exception {
-        return getCharArray(getData(expIndex,index));
+    public char getChar(int expIndex,int index) throws Exception {return getChar(getData(expIndex,index));}
+    public char getChar(int index) throws Exception {return getChar(getData(index));}
+    private char getChar(String data) throws Exception {
+        List<String> list = StringParser.delimit(data);
+        Object[] objs = StringParser.getArray(list);
+        return (char) objs[0];
     }
-    public char[] getCharArray(int index) throws Exception {
-        return getCharArray(getData(index));
-    }
+
+    public char[] getCharArray(int expIndex,int index) throws Exception {return getCharArray(getData(expIndex,index));}
+    public char[] getCharArray(int index) throws Exception {return getCharArray(getData(index));}
     private char[] getCharArray(String data) throws Exception {
         if(Objects.equals(data,""))return new char[0];
         List<String> list = StringParser.delimit(data);
@@ -136,12 +139,8 @@ public class LeetCodeContext {
     }
 
 
-    public char[][] getCharArrays(int expIndex,int index) throws Exception {
-        return getCharArrays(getData(expIndex,index));
-    }
-    public char[][] getCharArrays(int index) throws Exception {
-        return getCharArrays(getData(index));
-    }
+    public char[][] getCharArrays(int expIndex,int index) throws Exception {return getCharArrays(getData(expIndex,index));}
+    public char[][] getCharArrays(int index) throws Exception {return getCharArrays(getData(index));}
     private char[][] getCharArrays(String data) throws Exception {
         if(Objects.equals(data,""))return new char[0][];
         List<String> list = StringParser.delimit(data);
@@ -157,12 +156,8 @@ public class LeetCodeContext {
         return ret;
     }
 
-    public String getString(int expIndex,int index) throws Exception {
-        return getString(getData(expIndex,index));
-    }
-    public String getString(int index) throws Exception {
-        return getString(getData(index));
-    }
+    public String getString(int expIndex,int index) throws Exception {return getString(getData(expIndex,index));}
+    public String getString(int index) throws Exception {return getString(getData(index));}
     private String getString(String data) throws Exception {
         if(Objects.equals(data,""))return "";
         List<String> list = StringParser.delimit(data);
@@ -172,12 +167,8 @@ public class LeetCodeContext {
         return ret;
     }
 
-    public String[] getStringArray(int expIndex,int index) throws Exception {
-        return getStringArray(getData(expIndex,index));
-    }
-    public String[] getStringArray(int index) throws Exception {
-        return getStringArray(getData(index));
-    }
+    public String[] getStringArray(int expIndex,int index) throws Exception {return getStringArray(getData(expIndex,index));}
+    public String[] getStringArray(int index) throws Exception {return getStringArray(getData(index));}
     private String[] getStringArray(String data) throws Exception {
         if(Objects.equals(data,""))return new String[0];
         List<String> list = StringParser.delimit(data);
@@ -203,12 +194,8 @@ public class LeetCodeContext {
         return ret;
     }
 
-    public TreeNode getBinaryTree(int expIndex,int index) throws Exception {
-        return getBinaryTree(getData(expIndex,index));
-    }
-    public TreeNode getBinaryTree(int index) throws Exception {
-        return getBinaryTree(getData(index));
-    }
+    public TreeNode getBinaryTree(int expIndex,int index) throws Exception {return getBinaryTree(getData(expIndex,index));}
+    public TreeNode getBinaryTree(int index) throws Exception {return getBinaryTree(getData(index));}
     private TreeNode getBinaryTree(String data) throws Exception {
         if(Objects.equals(data,""))return null;
         List<String> list = StringParser.delimit(data);
@@ -238,12 +225,8 @@ public class LeetCodeContext {
         return root;
     }
 
-    public ListNode getListNode(int expIndex,int index) throws Exception {
-        return getListNode(getData(expIndex,index));
-    }
-    public ListNode getListNode(int index) throws Exception {
-        return getListNode(getData(index));
-    }
+    public ListNode getListNode(int expIndex,int index) throws Exception {return getListNode(getData(expIndex,index));}
+    public ListNode getListNode(int index) throws Exception {return getListNode(getData(index));}
     private ListNode getListNode(String data) throws Exception {
         if(Objects.equals(data, ""))return null;
         List<String> list = StringParser.delimit(data);

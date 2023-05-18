@@ -16,7 +16,7 @@ import org.junit.Test;
 @LeetCodeData("[\"tars\",\"rats\",\"arts\",\"star\"]")
 @LeetCodeData("")
 @LeetCodeExample("s=[1,2,3],b=[4,5,6]")
-@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']],d=[1,null,0,0,1]")
+@LeetCodeExample("s=[7,8,9],b=\"abcdefg\",c=[['A','B','C'],['B','C'],['C']],d=[1,null,0,0,1],e=5,f='a'")
 public class LeetCodeContextTest {
     LeetCodeContext lcc;
 
@@ -98,6 +98,8 @@ public class LeetCodeContextTest {
         String b="abcdefg";
         char[][] c = {{'A', 'B', 'C'}, {'B', 'C'}, {'C'}};
         TreeNode d = new TreeNode(1);
+        int e=5;
+        char f='a';
         d.right = new TreeNode(1);
         d.right.left = new TreeNode(0);
         d.right.right = new TreeNode(1);
@@ -106,5 +108,7 @@ public class LeetCodeContextTest {
         Assert.assertEquals(b,lcc.getString(1,1));
         Assert.assertArrayEquals(c,lcc.getCharArrays(1,2));
         //Assert.assertEquals(d,lcc.getBinaryTree(1,3));
+        Assert.assertEquals(e,lcc.getInt(1,4));
+        Assert.assertEquals(f,lcc.getChar(1,5));
     }
 }

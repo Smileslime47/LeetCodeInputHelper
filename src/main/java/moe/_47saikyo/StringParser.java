@@ -17,9 +17,10 @@ public class StringParser {
             while (j<value.length()&&value.charAt(j)!='='){
                 j++;
             }
-            while (j<value.length()&&(value.charAt(j)!=']'&&value.charAt(j)!='"')){
+            while (j<value.length()&&(value.charAt(j)!=',')){
                 j--;
             }
+            j--;
             if(j<value.length())j++;
             ret.add(value.substring(i,j));
             i=j+1;
